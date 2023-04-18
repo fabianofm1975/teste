@@ -31,6 +31,7 @@ stages:
               echo Command: $(COMMAND)
               echo Qnt Migrations: $(QNT_MIGRATIONS)
             displayName: Print
+
   - stage: CDNonProd
     displayName: CD non-prod
     dependsOn: CI
@@ -41,6 +42,7 @@ stages:
           VAR_GROUP: onboarding-db-migrations-stg
           ENVIRONMENT: NonProduction-Infra
           POOL_NAME: gcp-pricing-non-prod-agent
+
   - stage: CDProd
     displayName: CD prod
     dependsOn: 
