@@ -2,13 +2,13 @@ jobs:
   - job: RunLocalMigrate
     displayName: Local migrate w/ docker-compose
     pool:
-      vmImage: "ubuntu-20.04"
+      vmImage: ubuntu-latest
     steps:
       - task: DockerCompose@0
         displayName: up database
         inputs:
           containerregistrytype: Container Registry
-          dockerComposeFile: ./onboarding-db/migrations/docker-compose.yml
+          dockerComposeFile: ./affiliationvisa-db/migrations/docker-compose.yml
           action: Run a Docker Compose command
           qualifyImageNames: true
           dockerComposeCommand: up -d database
@@ -16,7 +16,7 @@ jobs:
         displayName: up migrate-up
         inputs:
           containerregistrytype: Container Registry
-          dockerComposeFile: ./onboarding-db/migrations/docker-compose.yml
+          dockerComposeFile: ./affiliationvisa-db/migrations/docker-compose.yml
           action: Run a Docker Compose command
           qualifyImageNames: true
           dockerComposeCommand: up --abort-on-container-exit --exit-code-from migrate-up migrate-up
@@ -24,7 +24,7 @@ jobs:
         displayName: up migrate-down-all
         inputs:
           containerregistrytype: Container Registry
-          dockerComposeFile: ./onboarding-db/migrations/docker-compose.yml
+          dockerComposeFile: ./affiliationvisa-db/migrations/docker-compose.yml
           action: Run a Docker Compose command
           qualifyImageNames: true
           dockerComposeCommand: up --abort-on-container-exit --exit-code-from migrate-down-all migrate-down-all
@@ -32,7 +32,7 @@ jobs:
         displayName: down
         inputs:
           containerregistrytype: Container Registry
-          dockerComposeFile: ./onboarding-db/migrations/docker-compose.yml
+          dockerComposeFile: ./affiliationvisa-db/migrations/docker-compose.yml
           action: Run a Docker Compose command
           qualifyImageNames: true
           dockerComposeCommand: down
