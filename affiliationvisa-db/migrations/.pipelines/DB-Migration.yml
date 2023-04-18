@@ -17,20 +17,20 @@ variables:
 - group: Migration-PRD
 
 stages:
-  - stage: CI
-    displayName: CI
-    jobs:
-      - template: jobs/run-local-migrate.yml
-      - template: jobs/publish-to-artifactory.yml
-      - job: PrintVariables
-        displayName: Print Variables
-        pool:
-          vmImage: ubuntu-latest
-        steps:
-          - bash: |
-              echo Command: $(COMMAND)
-              echo Qnt Migrations: $(QNT_MIGRATIONS)
-            displayName: Print
+#  - stage: CI
+#    displayName: CI
+#    jobs:
+#     - template: jobs/run-local-migrate.yml
+#      - template: jobs/publish-to-artifactory.yml
+#      - job: PrintVariables
+#        displayName: Print Variables
+#        pool:
+#          vmImage: ubuntu-latest
+#        steps:
+#          - bash: |
+#              echo Command: $(COMMAND)
+#              echo Qnt Migrations: $(QNT_MIGRATIONS)
+#            displayName: Print
 
   - stage: CDNonProd
     displayName: CD non-prod
