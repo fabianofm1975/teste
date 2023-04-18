@@ -34,8 +34,8 @@ stages:
 
   - stage: CDNonProd
     displayName: CD non-prod
-    dependsOn: CI
-    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    #dependsOn: CI
+    #condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     jobs:
       - template: jobs/run-migrate.yml
         parameters:
