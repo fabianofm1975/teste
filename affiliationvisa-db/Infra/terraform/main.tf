@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "azurerm" {
-        resource_group_name  = "Automacao"
+        resource_group_name  = "rg"
         storage_account_name = "fabianofm1975"
         container_name       = "terraform"
         key                  = "terraform.tfstate"
@@ -21,5 +21,3 @@ resource "azurerm_resource_group" "rg" {
   name     = "Automacao"
   location = "eastus"
 }
-
-
