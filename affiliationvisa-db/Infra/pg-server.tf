@@ -2,8 +2,8 @@ resource "azurerm_postgresql_flexible_server" "AffiliationVisa" {
   name                          = "AffiliationVisa"
   resource_group_name           = azurerm_resource_group.rg.name
   location                      = azurerm_resource_group.rg.location
-  version                       = "13"
-  administrator_login           = "psqladmin"
+  version                       = "12"
+  administrator_login           = "psqladminafl"
   administrator_password        = "Stone@@2023!"
   zone                          = "1"
   storage_mb                    = 32768

@@ -3,7 +3,7 @@ services:
   database:
     image: postgres:13-alpine
     environment:
-      POSTGRES_DATABASE_LOCAL: agreement-db
+      POSTGRES_DATABASE_LOCAL: AffiliationVisaDB
       POSTGRES_DB: agreement-db
       POSTGRES_HOST_LOCAL: localhost
       POSTGRES_PASSWORD_LOCAL: db_password
