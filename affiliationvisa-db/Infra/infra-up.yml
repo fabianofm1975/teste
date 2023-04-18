@@ -9,9 +9,6 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-parameters:
-  -VAR_GROUP: Terraform
-
 variables:
 - group: Terraform
 
