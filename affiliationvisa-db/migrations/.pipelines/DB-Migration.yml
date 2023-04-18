@@ -25,7 +25,7 @@ stages:
       - job: PrintVariables
         displayName: Print Variables
         pool:
-          vmImage: "ubuntu-20.04"
+          vmImage: ubuntu-latest
         steps:
           - bash: |
               echo Command: $(COMMAND)
@@ -39,9 +39,9 @@ stages:
     jobs:
       - template: jobs/run-migrate.yml
         parameters:
-          VAR_GROUP: onboarding-db-migrations-stg
+          VAR_GROUP: Migration-PRD
           ENVIRONMENT: NonProduction-Infra
-          POOL_NAME: gcp-pricing-non-prod-agent
+          POOL_NAME: "Azure Pipelines"
 
   - stage: CDProd
     displayName: CD prod
@@ -52,6 +52,6 @@ stages:
     jobs:
       - template: jobs/run-migrate.yml
         parameters:
-          VAR_GROUP: onboarding-db-migrations-prod
+          VAR_GROUP: Migration-PRD
           ENVIRONMENT: Production-Infra
-          POOL_NAME: gcp-pricing-prod-agent
+          POOL_NAME: "Azure Pipelines"
