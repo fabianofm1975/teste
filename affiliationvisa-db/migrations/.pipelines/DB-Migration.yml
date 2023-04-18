@@ -1,0 +1,52 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - onboarding-db/migrations
+pr:
+  branches:
+    include:
+      - main
+      - develop
+  paths:
+    include:
+      - onboarding-db/migrations
+stages:
+  - stage: CI
+    displayName: CI
+    jobs:
+      - template: jobs/run-local-migrate.yml
+      - template: jobs/publish-to-artifactory.yml
+      - job: PrintVariables
+        displayName: Print Variables
+        pool:
+          vmImage: "ubuntu-20.04"
+        steps:
+          - bash: |
+              echo Command: $(COMMAND)
+              echo Qnt Migrations: $(QNT_MIGRATIONS)
+            displayName: Print
+  - stage: CDNonProd
+    displayName: CD non-prod
+    dependsOn: CI
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    jobs:
+      - template: jobs/run-migrate.yml
+        parameters:
+          VAR_GROUP: onboarding-db-migrations-stg
+          ENVIRONMENT: NonProduction-Infra
+          POOL_NAME: gcp-pricing-non-prod-agent
+  - stage: CDProd
+    displayName: CD prod
+    dependsOn: 
+      - CI
+      - CDNonProd
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    jobs:
+      - template: jobs/run-migrate.yml
+        parameters:
+          VAR_GROUP: onboarding-db-migrations-prod
+          ENVIRONMENT: Production-Infra
+          POOL_NAME: gcp-pricing-prod-agent
