@@ -9,10 +9,13 @@ pr:
   branches:
     include:
       - main
-      - develop
   paths:
     include:
       - affiliationvisa-db/migrations
+
+variables:
+- group: Migration-PRD
+
 stages:
   - stage: CI
     displayName: CI
