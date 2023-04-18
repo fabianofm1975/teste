@@ -18,6 +18,6 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "Automacao"
+  name     = "Migration"
   location = "eastus"
 }
