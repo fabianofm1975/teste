@@ -79,5 +79,3 @@ stages:
               command: 'apply'
               workingDirectory: '$(terraformdirectory)'
               environmentServiceNameAzureRM: 'Azure RM'
-
-
