@@ -1,4 +1,4 @@
-CREATE USER migrationappuser WITH ENCRYPTED PASSWORD '#{POSTGRES_PASSWORD}#';
+CREATE USER migrationappuser WITH ENCRYPTED PASSWORD 'Stone@@2023!';
 
 GRANT CONNECT ON DATABASE "AffiliationVisaDB" TO migrationappuser;
 
