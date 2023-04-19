@@ -22,14 +22,14 @@ jobs:
           qualifyImageNames: true
           dockerComposeCommand: up --abort-on-container-exit --exit-code-from migrate-up migrate-up
 
-      - task: DockerCompose@0
-        displayName: up migrate-down-all
-        inputs:
-          containerregistrytype: Container Registry
-          dockerComposeFile: ./affiliationvisa-db/migrations/docker-compose.yml
-          action: Run a Docker Compose command
-          qualifyImageNames: true
-          dockerComposeCommand: up --abort-on-container-exit --exit-code-from migrate-down-all migrate-down-all
+     # - task: DockerCompose@0
+     #   displayName: up migrate-down-all
+     #   inputs:
+     #     containerregistrytype: Container Registry
+     #     dockerComposeFile: ./affiliationvisa-db/migrations/docker-compose.yml
+     #     action: Run a Docker Compose command
+     #     qualifyImageNames: true
+     #     dockerComposeCommand: up --abort-on-container-exit --exit-code-from migrate-down-all migrate-down-all
 
       - task: DockerCompose@0
         displayName: down
