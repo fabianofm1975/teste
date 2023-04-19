@@ -1,11 +1,11 @@
 version: "3"
 services:
   database:
-    image: postgres:12-alpine
+    image: postgres:13-alpine
     environment:
       POSTGRES_DATABASE_LOCAL: AffiliationVisaDB
       POSTGRES_DB: AffiliationVisaDB
-      POSTGRES_HOST_LOCAL: localhost
+      POSTGRES_HOST_LOCAL: database
       POSTGRES_PASSWORD_LOCAL: db_password
       POSTGRES_PASSWORD: db_password
       POSTGRES_PORT_LOCAL: 5432
