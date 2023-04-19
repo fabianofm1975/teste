@@ -38,21 +38,21 @@ services:
     depends_on:
       database:
         condition: service_healthy
- # migrate-down-all:
- #   build: .
- #   networks:
- #     - network
- #   volumes:
- #     - ./changes:/changes
- #   environment:
- #     POSTGRES_USER: db_user
- #     POSTGRES_PASSWORD: db_password
- #     POSTGRES_HOST: database
- #     POSTGRES_DATABASE: AffiliationVisaDB
- #     MIGRATE_COMMAND: down
- #     QNT_MIGRATIONS: --all
- #   depends_on:
- #     - migrate-up
+  migrate-down-all:
+    build: .
+    networks:
+      - network
+    volumes:
+      - ./changes:/changes
+    environment:
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: db_password
+      POSTGRES_HOST: database
+      POSTGRES_DATABASE: AffiliationVisaDB
+      MIGRATE_COMMAND: down
+      QNT_MIGRATIONS: --all
+    depends_on:
+      - migrate-up
 networks:
   network:
     driver: bridge
