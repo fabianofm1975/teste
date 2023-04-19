@@ -12,7 +12,7 @@ services:
       POSTGRES_USER: db_user
       POSTGRES_USER_LOCAL: db_user
     volumes:
-      - ../users/affiliationvisa_migration_user.sql:/docker-entrypoint-initdb.d/init.sql
+      - ../users/affiliationvisa_app_user.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
     healthcheck:
