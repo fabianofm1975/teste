@@ -12,6 +12,7 @@ jobs:
           action: Run a Docker Compose command
           qualifyImageNames: true
           dockerComposeCommand: up -d database
+
       - task: DockerCompose@0
         displayName: up migrate-up
         inputs:
@@ -20,6 +21,7 @@ jobs:
           action: Run a Docker Compose command
           qualifyImageNames: true
           dockerComposeCommand: up --abort-on-container-exit --exit-code-from migrate-up migrate-up
+
       - task: DockerCompose@0
         displayName: up migrate-down-all
         inputs:
@@ -28,6 +30,7 @@ jobs:
           action: Run a Docker Compose command
           qualifyImageNames: true
           dockerComposeCommand: up --abort-on-container-exit --exit-code-from migrate-down-all migrate-down-all
+
       - task: DockerCompose@0
         displayName: down
         inputs:
