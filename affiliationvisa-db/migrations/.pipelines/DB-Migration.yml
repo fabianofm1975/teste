@@ -17,7 +17,7 @@ stages:
   - stage: CI
     displayName: CI
     jobs:
-      - template: jobs/run-local-migrate.yml
+     # - template: jobs/run-local-migrate.yml
       - template: jobs/publish-to-artifactory.yml
       - job: PrintVariables
         displayName: Print Variables
