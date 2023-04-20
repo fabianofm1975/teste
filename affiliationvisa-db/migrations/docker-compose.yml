@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_DATABASE_LOCAL: AffiliationVisaDB
       POSTGRES_DB: AffiliationVisaDB
-      POSTGRES_HOST_LOCAL: database
+      POSTGRES_HOST_LOCAL: localhost
       POSTGRES_PASSWORD_LOCAL: db_password
       POSTGRES_PASSWORD: db_password
       POSTGRES_PORT_LOCAL: 5432
@@ -23,36 +23,25 @@ services:
     networks:
       - network
   migrate-up:
-    build: .
+    image: migrate/migrate
     networks:
       - network
     volumes:
       - ./changes:/changes
-    environment:
-      POSTGRES_USER: db_user
-      POSTGRES_PASSWORD: db_password
-      POSTGRES_HOST: database
-      POSTGRES_DATABASE: AffiliationVisaDB
-      MIGRATE_COMMAND: up
-      QNT_MIGRATIONS: ''
+    command: "-path /changes -database postgres://db_user:db_password@database:5432/AffiliationVisaDB?sslmode=disable up"
     depends_on:
       database:
         condition: service_healthy
   migrate-down-all:
-    build: .
+    image: migrate/migrate
     networks:
       - network
     volumes:
       - ./changes:/changes
-    environment:
-      POSTGRES_USER: db_user
-      POSTGRES_PASSWORD: db_password
-      POSTGRES_HOST: database
-      POSTGRES_DATABASE: AffiliationVisaDB
-      MIGRATE_COMMAND: down
-      QNT_MIGRATIONS: --all
+    command: "-path /changes -database postgres://db_user:db_password@database:5432/AffiliationVisaDB?sslmode=disable down --all"
     depends_on:
-      - migrate-up
+      database:
+        condition: service_healthy
 networks:
   network:
     driver: bridge
