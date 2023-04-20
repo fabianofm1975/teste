@@ -17,7 +17,7 @@ stages:
   - stage: CI
     displayName: CI
     jobs:
-      #- template: jobs/run-local-migrate.yml
+      - template: jobs/run-local-migrate.yml
       - template: jobs/publish-to-artifactory.yml
       - job: PrintVariables
         displayName: Print Variables
@@ -40,15 +40,15 @@ stages:
           ENVIRONMENT: NonProduction-Infra
           POOL_NAME: "Azure Pipelines"
 
-  #- stage: CDProd
-  #  displayName: CD prod
-  #  dependsOn: 
-  #    - CI
-  #    - CDNonProd
-  #  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-  #  jobs:
-  #    - template: jobs/run-migrate.yml
-  #      parameters:
-  #        VAR_GROUP: Migration-PRD
-  #        ENVIRONMENT: Production-Infra
-  #        POOL_NAME: "Azure Pipelines"
+  - stage: CDProd
+    displayName: CD prod
+    dependsOn: 
+      - CI
+      - CDNonProd
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    jobs:
+      - template: jobs/run-migrate.yml
+        parameters:
+          VAR_GROUP: Migration-PRD
+          ENVIRONMENT: Production-Infra
+          POOL_NAME: "Azure Pipelines"
