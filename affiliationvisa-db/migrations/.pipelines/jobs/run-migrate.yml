@@ -21,7 +21,7 @@ jobs:
               artifact: artifact
               displayName: Download artifact
             - bash: |
-                docker build -t migrate --build-arg POSTGRES_USER=$POSTGRES_USER --build-arg POSTGRES_PASSWORD='$(POSTGRES_PASSWORD)' --build-arg POSTGRES_HOST=$POSTGRES_HOST --build-arg POSTGRES_DATABASE=$POSTGRES_DATABASE --build-arg MIGRATE_COMMAND=$(COMMAND) --build-arg QNT_MIGRATIONS=$(QNT_MIGRATIONS) .
+                docker build -t migrate --build-arg POSTGRES_USER=$POSTGRES_USER --build-arg POSTGRES_PASSWORD='$(POSTGRES_PASSWORD)' --build-arg POSTGRES_HOST=$POSTGRES_HOST --build-arg POSTGRES_DATABASE=$POSTGRES_DATABASE --build-arg MIGRATE_COMMAND=$(COMMAND) --build-arg MIGRATE_NUMBER=$(MIGRATE_NUMBER) .
                 docker run migrate
               displayName: Docker build and run
               workingDirectory: $(Pipeline.Workspace)/artifact/affiliationvisa-db/migrations
