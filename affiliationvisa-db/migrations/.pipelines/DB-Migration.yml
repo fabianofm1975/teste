@@ -26,7 +26,7 @@ stages:
         steps:
           - bash: |
               echo Command: $(COMMAND)
-              echo Qnt Migrations: $(QNT_MIGRATIONS)
+              echo Qnt Migrations: $(MIGRATE_NUMBER)
             displayName: Print
 
   - stage: CDNonProd
