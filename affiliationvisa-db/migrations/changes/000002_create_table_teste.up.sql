@@ -1,4 +1,4 @@
-CREATE TABLE teste
+CREATE TABLE IF NOT EXISTS teste
 (
     id uuid NOT NULL CONSTRAINT onboarding_pkey PRIMARY KEY,
     correlation_id uuid NOT NULL,
