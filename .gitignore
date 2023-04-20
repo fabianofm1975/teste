@@ -1,5 +1,4 @@
 .vs*
 .wsuo
 *.lock
-/.vs/slnx.sqlite
-/.gitignore
+*.sqlite
