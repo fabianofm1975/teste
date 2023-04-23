@@ -15,6 +15,7 @@ pr:
 
 stages:
   - stage: CI
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     displayName: CI
     jobs:
       - template: jobs/run-local-migrate.yml

@@ -8,6 +8,7 @@ variables:
 
 stages:
   - stage: tfdestroy
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     jobs:
       - job: destroy
         steps: 
