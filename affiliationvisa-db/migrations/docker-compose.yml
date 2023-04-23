@@ -3,14 +3,10 @@ services:
   database:
     image: postgres:12
     environment:
-      POSTGRES_DATABASE_LOCAL: db_name
       POSTGRES_DB: db_name
-      POSTGRES_HOST_LOCAL: localhost
-      POSTGRES_PASSWORD_LOCAL: db_password
       POSTGRES_PASSWORD: db_password
-      POSTGRES_PORT_LOCAL: 5432
+      POSTGRES_PORT: 5432
       POSTGRES_USER: db_user
-      POSTGRES_USER_LOCAL: db_user
     ports:
       - "5432:5432"
     healthcheck:
@@ -26,7 +22,7 @@ services:
       - network
     volumes:
       - ./changes:/changes
-    command: "-path /changes -database postgres://db_user:db_password@localhost:5432/db_name?sslmode=disable up"
+    command: "-path /changes -database postgres://db_user:db_password@database:5432/db_name?sslmode=disable up"
     depends_on:
       database:
         condition: service_healthy
@@ -36,7 +32,7 @@ services:
       - network
     volumes:
       - ./changes:/changes
-    command: "-path /changes -database postgres://db_user:db_password@localhost:5432/db_name?sslmode=disable down --all"
+    command: "-path /changes -database postgres://db_user:db_password@database:5432/db_name?sslmode=disable down --all"
     depends_on:
       database:
         condition: service_healthy
