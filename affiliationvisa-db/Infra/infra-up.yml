@@ -5,6 +5,13 @@ trigger:
   paths:
     include:
     - affiliationvisa-db/Infra
+pr:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - affiliationvisa-db/Infra
 
 pool:
   vmImage: ubuntu-latest
