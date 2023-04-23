@@ -50,7 +50,6 @@ stages:
 
   - stage: tfdeploy
     dependsOn: tfvalidate
-   #condition: succeeded('tfvalidate')
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
     jobs:
       - job: apply
@@ -89,3 +88,15 @@ stages:
               command: 'apply'
               workingDirectory: '$(terraformdirectory)'
               environmentServiceNameAzureRM: 'Azure RM'
+  - stage: tls-off
+    dependsOn: tfdeploy
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    jobs:
+      - job: tls-off
+        steps: 
+          - task: AzureCLI@2
+            inputs:
+            azureSubscription: 'Azure RM'
+            scriptType: 'bash'
+            scriptLocation: 'inlineScript'
+            inlineScript: 'az postgres flexible-server parameter set --name require_secure_transport --value off --resource-group Migration --server-name affiliationvisa-db'
