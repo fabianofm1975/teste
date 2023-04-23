@@ -1,0 +1,1 @@
+REVOKE SELECT, INSERT, UPDATE, DELETE ON public.schema_migrations from "AffiliationVisaAppUser";
