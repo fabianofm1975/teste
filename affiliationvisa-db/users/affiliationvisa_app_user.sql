@@ -1,7 +1,7 @@
 CREATE USER "AffiliationVisaAppUser" WITH ENCRYPTED PASSWORD 'Stone@@2023!';
 GRANT CONNECT ON DATABASE "AffiliationVisaDB" TO "AffiliationVisaAppUser";
 
--- Alterando default privileges
+-- Alterando default privileges EXECUTAR NO BANCO "AffiliationVisaDB"
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO "AffiliationVisaAppUser";
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT,USAGE ON SEQUENCES TO "AffiliationVisaAppUser";
