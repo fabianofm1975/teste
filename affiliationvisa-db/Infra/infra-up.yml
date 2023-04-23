@@ -88,6 +88,7 @@ stages:
               command: 'apply'
               workingDirectory: '$(terraformdirectory)'
               environmentServiceNameAzureRM: 'Azure RM'
+
   - stage: tls-off
     dependsOn: tfdeploy
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
