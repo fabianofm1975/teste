@@ -17,3 +17,9 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: 'Azure RM'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az postgres flexible-server parameter set --name require_secure_transport --value off --resource-group Migration --server-name affiliationvisa-db'
