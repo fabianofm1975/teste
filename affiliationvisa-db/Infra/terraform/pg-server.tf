@@ -1,4 +1,4 @@
-resource "azurerm_resource_group" "rd_db" {
+resource "azurerm_resource_group" "rg_db" {
   name     = "Automacao"
   location = "eastus"
 }
