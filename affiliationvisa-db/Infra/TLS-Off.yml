@@ -16,6 +16,7 @@ pr:
 pool:
   vmImage: ubuntu-latest
 
+steps:
 - task: AzureCLI@2
   inputs:
     azureSubscription: 'Azure RM'
