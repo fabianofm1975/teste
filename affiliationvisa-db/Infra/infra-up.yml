@@ -95,8 +95,8 @@ stages:
     jobs:
       - job: tls-off
         steps: 
-          - task: AzureCLI@2
-            inputs:
+        - task: AzureCLI@2
+          inputs:
             azureSubscription: 'Azure RM'
             scriptType: 'bash'
             scriptLocation: 'inlineScript'
