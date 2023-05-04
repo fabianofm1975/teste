@@ -13,6 +13,13 @@ pr:
     include:
       - affiliationvisa-db/migrations
 
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: fabianofm1975/azure-pipelines-templates
+      endpoint: 'Github-Templates'
+
 stages:
   - stage: CI
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
