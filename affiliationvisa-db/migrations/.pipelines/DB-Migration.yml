@@ -13,23 +13,6 @@ pr:
     include:
       - affiliationvisa-db/migrations
 
-resources:
-  repositories:
-    - repository: templates
-      type: github
-      name: fabianofm1975/azure-pipelines-templates
-      endpoint: 'Github-Templates'
-
-extends:
-  template: database/migrate/.pipelines/db-migrations-template.yml@templates
-  parameters:
-    VAR_GROUP: Migration-STG
-    ENVIRONMENT: NonProduction-DB
-    POOL_NAME: "Azure Pipelines"
-    COMMAND: $(COMMAND)
-    MIGRATIONS: $(MIGRATE_NUMBER)
-    DATABASE: affiliationvisa-db
-
 stages:
   - stage: CI
     condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
@@ -47,16 +30,16 @@ stages:
               echo Qnt Migrations: $(MIGRATE_NUMBER)
             displayName: Print
 
-  # - stage: CDNonProd
-  #  displayName: CD non-prod
-  #  dependsOn: CI
-  #  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-  #  jobs:
-  #    - template: jobs/run-migrate.yml
-  #      parameters:
-  #        VAR_GROUP: Migration-STG
-  #        ENVIRONMENT: NonProduction-Infra
-  #        POOL_NAME: "Azure Pipelines"
+  - stage: CDNonProd
+    displayName: CD non-prod
+    dependsOn: CI
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    jobs:
+      - template: jobs/run-migrate.yml
+        parameters:
+          VAR_GROUP: Migration-STG
+          ENVIRONMENT: NonProduction-Infra
+          POOL_NAME: "Azure Pipelines"
 
  # - stage: CDProd
  #   displayName: CD prod
