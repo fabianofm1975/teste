@@ -1,0 +1,33 @@
+parameters:
+  - name: stages
+    type: object
+    default: {}
+  - name: 'repository'
+    type: string
+    default: 'templates'
+  - name: 'pool'
+    type: object
+    default: {"vmImage": "ubuntu-latest"}
+  - name: 'variableGroups'
+    type: object
+    default: {}
+  - name: 'variables'
+    type: object
+    default: {}
+
+stages:
+  - stage: CI
+    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+    displayName: CI
+    jobs:
+      - template: jobs/run-local-migrate.yml
+      - template: jobs/publish-to-artifactory.yml
+      - job: PrintVariables
+        displayName: Print Variables
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - bash: |
+              echo Command: $(COMMAND)
+              echo Qnt Migrations: $(MIGRATE_NUMBER)
+            displayName: Print
