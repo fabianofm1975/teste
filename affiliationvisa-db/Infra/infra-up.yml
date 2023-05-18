@@ -100,4 +100,4 @@ stages:
             azureSubscription: 'Azure RM'
             scriptType: 'bash'
             scriptLocation: 'inlineScript'
-            inlineScript: 'az postgres flexible-server parameter set --name require_secure_transport --value off --resource-group Automacao --server-name affiliationvisa-db'
+            inlineScript: 'az postgres flexible-server parameter set --name require_secure_transport --value off --resource-group Automacao --server-name testedb'
