@@ -1,8 +1,3 @@
--- Removendo privilégios herdados da role PUBLIC. 
--- Deve ser executado com usuário admin da cloud ou postgres, em todos os bancos existentes e em todo novo banco criado.
-
-REVOKE ALL ON SCHEMA public FROM public;
-
 -- Alterando default privileges para o usuário appuser
 -- Executar no banco da aplicação, logado com usuário migrationappuser
 
@@ -20,4 +15,3 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT,USAGE ON SEQUENCES TO psq
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE ON TYPES TO psqladmin;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON FUNCTIONS TO psqladmin;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON ROUTINES TO psqladmin;
-
