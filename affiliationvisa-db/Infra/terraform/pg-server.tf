@@ -4,10 +4,10 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_postgresql_flexible_server" "testedb" {
-  name                          = "teste-db"
+  name                          = "testedb"
   resource_group_name           = azurerm_resource_group.rg.name
   location                      = azurerm_resource_group.rg.location
-  version                       = "14"
+  version                       = "15"
   administrator_login           = "psqladmin"
   administrator_password        = "Stone@2023!"
   zone                          = "1"
