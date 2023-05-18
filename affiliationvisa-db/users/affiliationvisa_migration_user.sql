@@ -10,6 +10,5 @@ GRANT CONNECT ON DATABASE "teste-db" TO migrationappuser;
 
 -- Executar no banco "teste-db" logado com usuário admin da cloud ou postgres
 
-REVOKE ALL ON SCHEMA public FROM public;
 GRANT ALL ON SCHEMA public TO migrationappuser;
 
