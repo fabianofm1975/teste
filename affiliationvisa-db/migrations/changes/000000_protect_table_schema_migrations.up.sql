@@ -2,9 +2,9 @@ DO
 $do$
 BEGIN
    IF EXISTS (
-      SELECT FROM pg_catalog.pg_roles WHERE  rolname = 'AffiliationVisaAppUser') 
+      SELECT FROM pg_catalog.pg_roles WHERE  rolname = 'appuser') 
    THEN
-      REVOKE SELECT, INSERT, UPDATE, DELETE ON public.schema_migrations from "AffiliationVisaAppUser";
+      REVOKE ALL ON public.schema_migrations from appuser;
    END IF;
 END
 $do$;

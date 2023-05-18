@@ -12,7 +12,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE ON TYPES TO appuser;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON FUNCTIONS TO appuser;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON ROUTINES TO appuser;
 
--- Alterando default privileges para o usuario admin da cloud 
+-- Alterando default privileges para o usuario admin da cloud e/ou postgres ( dependendo do ambiente )
 -- Executar no banco da aplicação, logado com usuário migrationappuser
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON TABLES TO psqladmin;
@@ -21,11 +21,3 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE ON TYPES TO psqladmin;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON FUNCTIONS TO psqladmin;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON ROUTINES TO psqladmin;
 
--- Alterando default privileges para o usuario postgres 
--- Executar no banco da aplicação, logado com usuário migrationappuser
-
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON TABLES TO postgres;
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT,USAGE ON SEQUENCES TO postgres;
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT USAGE ON TYPES TO postgres;
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON FUNCTIONS TO postgres;
-ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON ROUTINES TO postgres;
