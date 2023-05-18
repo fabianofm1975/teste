@@ -1,4 +1,4 @@
-resource "azurerm_postgresql_flexible_server_database" "testedb" {
+resource "azurerm_postgresql_flexible_server_database" "teste-db" {
   name      = "teste-db"
   server_id = azurerm_postgresql_flexible_server.testedb.id
   collation = "en_US.utf8"
