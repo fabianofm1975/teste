@@ -1,5 +1,5 @@
 -- Alterando default privileges para o usuário appuser
--- Executar no banco da aplicação, logado com usuário migrationappuser
+-- Executar no BANCO DA APLICAÇÃO logado com usuário MIGRATIONAPPUSER
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON TABLES TO appuser;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT,USAGE ON SEQUENCES TO appuser;
@@ -8,7 +8,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON FUNCTIONS TO appuser;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT EXECUTE ON ROUTINES TO appuser;
 
 -- Alterando default privileges para o usuario admin da cloud e/ou postgres ( dependendo do ambiente )
--- Executar no banco da aplicação, logado com usuário migrationappuser
+-- Executar no BANCO DA APLICAÇÃO logado com usuário MIGRATIONAPPUSER
 
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT, INSERT, UPDATE, DELETE, TRUNCATE ON TABLES TO psqladmin;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT,USAGE ON SEQUENCES TO psqladmin;

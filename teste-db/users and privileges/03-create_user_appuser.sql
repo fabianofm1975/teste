@@ -1,9 +1,9 @@
--- Executar com usuário admin da cloud ou postgres
+-- Executar em qualquer banco com usuário ADMIN da cloud ou POSTGRES
 
 CREATE USER appuser WITH ENCRYPTED PASSWORD 'Stone@2023!';
 GRANT CONNECT ON DATABASE "teste-db" TO appuser;
 
--- Executar no banco da aplicação logado com usuário admin da cloud ou postgres
+-- Executar no BANCO DA APLICAÇÃO logado com usuário ADMIN da cloud ou POSTGRES
 
 GRANT USAGE ON SCHEMA public TO appuser;
 
