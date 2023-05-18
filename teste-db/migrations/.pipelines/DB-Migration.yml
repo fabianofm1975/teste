@@ -4,14 +4,14 @@ trigger:
       - master
   paths:
     include:
-      - affiliationvisa-db/migrations
+      - teste-db/migrations
 pr:
   branches:
     include:
       - master
   paths:
     include:
-      - affiliationvisa-db/migrations
+      - teste-db/migrations
 
 stages:
   - stage: CI

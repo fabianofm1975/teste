@@ -8,7 +8,7 @@ jobs:
         displayName: up database
         inputs:
           containerregistrytype: Container Registry
-          dockerComposeFile: ./affiliationvisa-db/migrations/docker-compose.yml
+          dockerComposeFile: ./teste-db/migrations/docker-compose.yml
           action: Run a Docker Compose command
           qualifyImageNames: true
           dockerComposeCommand: up -d database
@@ -17,7 +17,7 @@ jobs:
         displayName: up migrate-up
         inputs:
           containerregistrytype: Container Registry
-          dockerComposeFile: ./affiliationvisa-db/migrations/docker-compose.yml
+          dockerComposeFile: ./teste-db/migrations/docker-compose.yml
           action: Run a Docker Compose command
           qualifyImageNames: true
           dockerComposeCommand: up --abort-on-container-exit --exit-code-from migrate-up migrate-up
@@ -26,7 +26,7 @@ jobs:
         displayName: up migrate-down-all
         inputs:
           containerregistrytype: Container Registry
-          dockerComposeFile: ./affiliationvisa-db/migrations/docker-compose.yml
+          dockerComposeFile: ./teste-db/migrations/docker-compose.yml
           action: Run a Docker Compose command
           qualifyImageNames: true
           dockerComposeCommand: up --abort-on-container-exit --exit-code-from migrate-down-all migrate-down-all
@@ -35,7 +35,7 @@ jobs:
         displayName: down
         inputs:
           containerregistrytype: Container Registry
-          dockerComposeFile: ./affiliationvisa-db/migrations/docker-compose.yml
+          dockerComposeFile: ./teste-db/migrations/docker-compose.yml
           action: Run a Docker Compose command
           qualifyImageNames: true
           dockerComposeCommand: down

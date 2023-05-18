@@ -4,14 +4,14 @@ trigger:
     - master
   paths:
     include:
-    - affiliationvisa-db/Infra
+    - teste-db/Infra
 pr:
   branches:
     include:
       - master
   paths:
     include:
-      - affiliationvisa-db/Infra
+      - teste-db/Infra
 
 pool:
   vmImage: ubuntu-latest
