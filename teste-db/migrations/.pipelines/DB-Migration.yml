@@ -26,7 +26,7 @@ stages:
           vmImage: ubuntu-latest
         steps:
           - bash: |
-              echo Command: $(COMMAND)
+              echo Command: $(MIGRATE_COMMAND)
               echo Qnt Migrations: $(MIGRATE_NUMBER)
             displayName: Print
 
