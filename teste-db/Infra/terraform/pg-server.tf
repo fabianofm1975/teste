@@ -8,7 +8,7 @@ resource "azurerm_postgresql_flexible_server" "testedb" {
   resource_group_name           = azurerm_resource_group.rg.name
   location                      = azurerm_resource_group.rg.location
   version                       = "14"
-  administrator_login           = "psqladmin"
+  administrator_login           = "postgres"
   administrator_password        = "Stone@2023!"
   zone                          = "1"
   storage_mb                    = 32768
